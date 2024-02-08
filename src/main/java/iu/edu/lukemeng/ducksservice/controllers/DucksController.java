@@ -71,12 +71,16 @@ public class DucksController {
     @PostMapping("/{id}/image")
     public boolean updateImage(@PathVariable int id,
                                @RequestParam MultipartFile file) {
-        try {
-            return ducksRepository.uploadImage(id, file);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println(file);
+        return true;
+//        try {
+//            return ducksRepository.updateImage(id, file);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
+
+
 
     @GetMapping("/{id}/image")
     public ResponseEntity<?> downloadImage(@PathVariable int id) {

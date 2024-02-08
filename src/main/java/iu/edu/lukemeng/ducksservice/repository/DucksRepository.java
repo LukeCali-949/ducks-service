@@ -101,9 +101,10 @@ public class DucksRepository {
         return result;
     }
 
-
-    public boolean uploadImage(int id, MultipartFile file) throws IOException {
-
+    // from prof sample code
+    public boolean updateImage(int id, MultipartFile file) throws IOException {
+        System.out.println(file.getOriginalFilename());
+        System.out.println(file.getContentType());
 
         String fileExtension = ".png";
         Path path = Paths.get(IMAGES_FOLDER_PATH
@@ -112,6 +113,18 @@ public class DucksRepository {
         file.transferTo(path);
         return true;
     }
+
+    public boolean uploadImage(int id, MultipartFile file) throws IOException {
+        String fileExtension = ".png";
+        Path directoryPath = Paths.get(IMAGES_FOLDER_PATH).toAbsolutePath();
+        Files.createDirectories(directoryPath); // Ensure the directory exists
+
+        Path filePath = directoryPath.resolve(id + fileExtension);
+        System.out.println("The file " + filePath + " was saved successfully.");
+        file.transferTo(filePath);
+        return true;
+    }
+
 
     public byte[] downloadImage(int duckId, String filename) throws IOException {
         Path imagePath = IMAGE_DIRECTORY.resolve(duckId + "_" + filename);
