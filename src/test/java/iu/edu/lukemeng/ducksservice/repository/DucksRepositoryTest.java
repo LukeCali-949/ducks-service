@@ -48,6 +48,7 @@ class DucksRepositoryTest {
     @Test
     void getDuck() throws IOException {
         DucksRepository ducksRepository = new DucksRepository();
+        ducksRepository.clearFile();
         DuckData duckData = new DuckData(87, "Redhead");
         DuckData duckData2 = new DuckData(32, "Rubber");
 
@@ -70,6 +71,7 @@ class DucksRepositoryTest {
     @Test
     void getAllDucks() throws IOException {
         DucksRepository ducksRepository = new DucksRepository();
+        ducksRepository.clearFile();
         DuckData duckData = new DuckData(87, "Redhead");
         DuckData duckData2 = new DuckData(32, "Rubber");
         DuckData duckData3 = new DuckData(45, "Mallard");
