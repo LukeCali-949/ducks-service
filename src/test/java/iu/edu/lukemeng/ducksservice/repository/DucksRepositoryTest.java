@@ -14,6 +14,8 @@ class DucksRepositoryTest {
     @Test
     void add() throws IOException {
         DucksRepository ducksRepository = new DucksRepository();
+        ducksRepository.clearFile();
+
         DuckData duckData = new DuckData(45, "Mallard");
         DuckData duckData2 = new DuckData(25, "decoy");
 
@@ -98,6 +100,8 @@ class DucksRepositoryTest {
     @Test
     void search() throws IOException {
         DucksRepository ducksRepository = new DucksRepository();
+        ducksRepository.clearFile();
+
         DuckData duckData = new DuckData(87, "Redhead");
         DuckData duckData2 = new DuckData(32, "Mallard");
         DuckData duckData3 = new DuckData(45, "Mallard");
