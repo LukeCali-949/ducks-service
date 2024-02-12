@@ -55,6 +55,11 @@ public class DucksRepository {
         }
         return null;
     }
+    public void clearFile() throws IOException {
+        Path path = Paths.get(DATABASE_NAME);
+        // This will clear the file if it exists, or create a new empty file if it doesn't.
+        Files.write(path, new byte[0], StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+    }
 
     public List<Duck> getAllDucks() throws IOException {
         Path path = Paths.get(DATABASE_NAME);
